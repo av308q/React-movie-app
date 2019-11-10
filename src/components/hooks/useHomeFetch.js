@@ -17,7 +17,7 @@ export const useHomeFetch = () => {
       
       setState(prev =>({
         ...prev,
-        movie: [...result.results],
+        movies: [...result.results],
         heroImage: prev.heroImage / result.results[0],
         currentPage: result.page,
         totalPages: result.total_pages,
