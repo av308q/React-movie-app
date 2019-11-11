@@ -1,12 +1,17 @@
 import React from 'react';
+
+
 import Header from './elements/Header';
 import Home from './Home';
 
+import {GlobalStyle} from './styles/GlobalStyle';
+
 const App = () => (
-<div>
+<React.Fragment>
   <Header/>
   <Home/>
-</div>
+  <GlobalStyle/>
+</React.Fragment>
 );
 
 export default App;
