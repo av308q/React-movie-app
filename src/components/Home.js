@@ -31,7 +31,16 @@ const Home = () => {
 	
 	}, 
 	fetchMovies] = useHomeFetch();
-  const [searchTerm, setSearchTerm] = useState('');
+	const [searchTerm, setSearchTerm] = useState('');
+	
+	const  loadMoreMovies = () => {
+		const searchEndpoint = `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&page=${currentPage + 1}`;
+		const PopularEndpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=${currentPage + 1}`;
+
+		const endpoint = searchTerm ? searchEndpoint : PopularEndpoint;
+
+		fetchMovies(endpoint);
+	}
   
  
 
@@ -66,9 +75,9 @@ const Home = () => {
         }
 
       </Grid>
-			<MovieThumb />
-			<Spinner />
-			<LoadMoreBtn />
+			
+			{loading && <Spinner />}
+			<LoadMoreBtn Text="Load more" callback={loadMoreMovies}/>
 		</React.Fragment>
 	);
 };
