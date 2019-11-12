@@ -77,7 +77,9 @@ const Home = () => {
       </Grid>
 			
 			{loading && <Spinner />}
+			{currentPage < totalPages && !loading && (
 			<LoadMoreBtn Text="Load more" callback={loadMoreMovies}/>
+			)}
 		</React.Fragment>
 	);
 };
