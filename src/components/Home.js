@@ -23,26 +23,33 @@ import { useHomeFetch } from "./hooks/useHomeFetch";
 import NoImage from './images/no_image.jpg';
 
 const Home = () => {
-  const [{ state, loading, error }, fetchMovies] = useHomeFetch();
+	const [
+		{ 
+		state:{movies, currentPage, totalPages, heroImage}, 
+		loading, 
+		error, 
+	
+	}, 
+	fetchMovies] = useHomeFetch();
   const [searchTerm, setSearchTerm] = useState('');
   
  
 
-	console.log(state);
+	
 
 	if (error) return <div>Somthing went wrong ...</div>;
-	if (!state.movies[0]) return <Spinner />;
+	if (!movies[0]) return <Spinner />;
 
 	return (
 		<React.Fragment>
 			<HeroImage
-				image={`${IMAGE_POSTER_URL}${state.movies[0].backdrop_path}`}
-				title={state.heroImage.original_title}
-				text={state.heroImage.overview}
+				image={`${IMAGE_POSTER_URL}${movies[0].backdrop_path}`}
+				title={heroImage.original_title}
+				text={heroImage.overview}
 			/>
 			<SearchBar />
 			<Grid header={searchTerm ? 'Search Result' : 'Popular Movies'}>
-        {state.movies.map(movie =>(
+        {movies.map(movie =>(
           <MovieThumb
             key={movie.id}
             clickable
