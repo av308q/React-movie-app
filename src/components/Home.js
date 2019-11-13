@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import {
-	API_URL,
-	API_KEY,
-	API_BASE_URL,
+	POPULAR_BASE_URL,
+	SEARCH_BASE_URL,
 	POSTER_SIZE,
 	BACKDROP_SIZE,
 	IMAGE_BASE_URL,
@@ -32,10 +31,18 @@ const Home = () => {
 	}, 
 	fetchMovies] = useHomeFetch();
 	const [searchTerm, setSearchTerm] = useState('');
+
+	const searchMovies = search => {
+		const endpoint = search ? SEARCH_BASE_URL + search : POPULAR_BASE_URL;
+
+		setSearchTerm(search);
+		fetchMovies(endpoint);
+
+	}
 	
 	const  loadMoreMovies = () => {
-		const searchEndpoint = `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}&page=${currentPage + 1}`;
-		const PopularEndpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=${currentPage + 1}`;
+		const searchEndpoint = `${SEARCH_BASE_URL}${searchTerm}&page=${currentPage + 1}`;
+		const PopularEndpoint = `${POPULAR_BASE_URL}&page=${currentPage + 1}`;
 
 		const endpoint = searchTerm ? searchEndpoint : PopularEndpoint;
 
@@ -56,7 +63,7 @@ const Home = () => {
 				title={heroImage.original_title}
 				text={heroImage.overview}
 			/>
-			<SearchBar />
+			<SearchBar callback ={searchMovies} />
 			<Grid header={searchTerm ? 'Search Result' : 'Popular Movies'}>
         {movies.map(movie =>(
           <MovieThumb

@@ -11,7 +11,17 @@ const SearchBar = ({callback}) => {
   const timeOut = useRef(null);
 
   const doSearch = event => {
-    console.log(event)
+    console.log(event.value);
+    const {value} = event.target;
+    setState(value);
+
+    clearTimeout(timeOut.current);
+    setState(value);
+
+    timeOut.current = setTimeout (() =>{
+      callback(value);
+    }, 500);
+
   }
 
   return (
