@@ -58,11 +58,13 @@ const Home = () => {
 
 	return (
 		<React.Fragment>
+			{!searchTerm &&(
 			<HeroImage
 				image={`${IMAGE_POSTER_URL}${movies[0].backdrop_path}`}
 				title={heroImage.original_title}
 				text={heroImage.overview}
 			/>
+			)}
 			<SearchBar callback ={searchMovies} />
 			<Grid header={searchTerm ? 'Search Result' : 'Popular Movies'}>
         {movies.map(movie =>(
