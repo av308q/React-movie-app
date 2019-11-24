@@ -26,9 +26,19 @@ const MovieInfo = ({ movie }) => (
 				<h1>{movie.title}</h1>
 				<h3>PlOT</h3>
 				<p>{movie.overview}</p>
-			</div>
-			<div className="rating-director">
-				<div></div>
+
+				<div className="rating-director">
+					<div>
+						<h3>IMDB RATING</h3>
+						<div className="score">{movie.vote_average}</div>
+					</div>
+					<div className="director">
+						<h3>DIRECTOR{movie.director > 1 ? "s" : ""}</h3>
+						{movie.directors.map(element => (
+							<p key={element.credit_id}>{element.name}</p>
+						))}
+					</div>
+				</div>
 			</div>
 		</div>
 	</StyledMovieInfo>
