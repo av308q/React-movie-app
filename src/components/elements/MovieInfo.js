@@ -22,12 +22,15 @@ const MovieInfo = ({ movie }) => (
 					clickable={false}
 				/>
 			</div>
-      <div className="movieinfo-text">
-        <h1>{movie.title}</h1>
-        <h3>PlOT</h3>
-        <p>{movie.overview}</p>
+			<div className="movieinfo-text">
+				<h1>{movie.title}</h1>
+				<h3>PlOT</h3>
+				<p>{movie.overview}</p>
+			</div>
+			<div className="rating-director">
+				<div></div>
+			</div>
 		</div>
-    </div>
 	</StyledMovieInfo>
 );
 
