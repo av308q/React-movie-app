@@ -3,42 +3,27 @@ import FontAwesome from "react-fontawesome";
 import { calcTime, convertMoney } from "../../helpers";
 import { StyledMovieInfoBar } from "../styles/StyledMovieInfoBar";
 
-const MovieinfoBar = ({ time, budget, revenue }) => (
+const MovieInfoBar = ({ time, budget, revenue }) => (
 	<StyledMovieInfoBar>
-		<div className="movieinfobar-content"></div>
+		<div className="movieinfobar-content">
 			<div className="movieinfobar-content-content-col">
 				<FontAwesome className="fa-time" name="clock-o" size="2x" />
-				<span className="movieinfobar-info">
-          Running time:{calcTime(time)}
-          </span>
+				<span className="movieinfobar-info">Running time:{calcTime(time)}</span>
 			</div>
 
-      
 			<div className="movieinfobar-content-content-col">
 				<FontAwesome className="fa-budget" name="money" size="2x" />
-				<span className="movieinfobar-info">
-          Budget:{convertMoney(budget)}
-          </span>
+				<span className="movieinfobar-info">Budget:{convertMoney(budget)}</span>
 			</div>
-		
 
-
-    
 			<div className="movieinfobar-content-content-col">
 				<FontAwesome className="fa-revenue" name="ticket" size="2x" />
 				<span className="movieinfobar-info">
-          Running time:{convertMoney(revenue)}
-          </span>
+					Running time:{convertMoney(revenue)}
+				</span>
 			</div>
-		
-
-
-
-
-
-		
-  
+		</div>
 	</StyledMovieInfoBar>
 );
 
-export default MovieinfoBar;
+export default MovieInfoBar;

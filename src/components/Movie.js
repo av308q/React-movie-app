@@ -21,15 +21,15 @@ const Movie = ({ movieId }) => {
 		<React.Fragment>
 			<Navigation movie={movie.original_title} />
 			<MovieInfo movie={movie} />
-      <MovieInfoBar
-      time={movie.runtime}
-      budget={movie.budget}
-      revenue={movie.revenue}
-       />
+			<MovieInfoBar
+				time={movie.runtime}
+				budget={movie.budget}
+				revenue={movie.revenue}
+			/>
 			<Grid header="Actors">
-				{movie.actors.map(actor =>(
-          <Actor key={actor.credit_id} actor={actor} />
-        ))}
+				{movie.actors.map(actor => (
+					<Actor key={actor.credit_id} actor={actor} />
+				))}
 			</Grid>
 		</React.Fragment>
 	);
